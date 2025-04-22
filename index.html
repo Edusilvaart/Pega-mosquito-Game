@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo - mata mosquito</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous" />
+
+    <script>
+      function iniciarJogo() {
+        var nivel = document.getElementById("nivel").value; // Obtém o valor do nível selecionado
+
+        if (nivel === "") {
+          window.alert("Selecione um nível"); // Exibe um alerta se nenhum nível for selecionado
+          return; // Sai da função se o nível não for selecionado
+        }
+
+        // Redireciona para a página do jogo, passando o nível selecionado na URL
+        window.location.href = "jogo.html?nivel=" + nivel;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="d-flex justify-content-center">
+            <img src="imagens/game.png" alt="" class="img-fluid"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="d-flex justify-content-center">
+            <div class="mb-2">
+              <select class="form-control" id="nivel">
+                <option value="">-- selecione o nivel</option>
+                <option value="facil">Fácil</option>
+                <option value="medio">Médio</option>
+                <option value="dificil">Difícil</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="d-flex justify-content-center">
+            <button
+              type="button"
+              class="btn btn-danger btn-lg"
+              onclick="iniciarJogo()">
+              Iniciar jogo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
