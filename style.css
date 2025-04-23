@@ -1,59 +1,291 @@
+/* style.css */
+
+/* Estilos Globais */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 html {
-    cursor: url(imagens/mata_mosca.png) 30 30, auto; 
+  cursor: url(imagens/mata_mosca.png) 30 30, auto;
+  font-family: "Poppins", sans-serif;
 }
 
-body{
-    background-image: url("imagens/background.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed ;
+body {
+  background-image: url("imagens/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  overflow: hidden;
 }
 
-.mosquito1{
-    width: 50px;
-    height: 50px;
+/* Estilos dos Mosquitos */
+.mosquito {
+  position: absolute;
+  transition: opacity 0.1s ease-in-out;
+  z-index: 5;
+  animation-name: voarLocal; /* Aplica a animação de voo local */
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-duration: 2s; /* Duração padrão */
 }
 
-.mosquito2{
-    width: 80px;
-    height: 80px;
+.mosquito1 {
+  width: 60px; /* Reduzindo o tamanho padrão para telas menores */
+  height: 60px;
 }
 
-.mosquito3{
-    width: 100px;
-    height: 100px;
+.mosquito2 {
+  width: 80px;
+  height: 80px;
 }
 
-.ladoA{
-    transform: scaleX(1);
+.mosquito3 {
+  width: 100px;
+  height: 100px;
 }
 
-.ladoB{
-    transform: scaleX(-1);
+/* Animação de Flutuação Vertical com Leve Movimento Lateral Suave */
+@keyframes voarLocal {
+  0% {
+    transform: translate(0, 0) scaleX(1);
+  } /* Começa olhando para a direita */
+  33% {
+    transform: translate(2px, 3px) scaleX(1);
+  }
+  66% {
+    transform: translate(-2px, 6px) scaleX(1);
+  }
+  100% {
+    transform: translate(0, 0) scaleX(1);
+  }
 }
 
-.painel{
-    position: absolute;
-    width: 190px;
-    padding: 10px;
-    bottom: 0;
-    border-top: 1px solid #fff;
-    background-color: #fff;
-    opacity: 0.7;
-    left: 0px;
+/* Ajuste da Duração da Animação com base no Nível */
+.mosquito.velocidade-facil {
+  animation-duration: 2.5s;
 }
 
-.vidas{
-    float: left;
+.mosquito.velocidade-medio {
+  animation-duration: 2s;
 }
 
-.cronometro{
-    float: left;
-    font-size: 20px;
-    font-weight: bold;
+.mosquito.velocidade-dificil {
+  animation-duration: 1.5s;
 }
 
-.img-fluid{
-    max-width: 100%; height: auto;
+/* Painéis do Jogo Principal */
+.painel-cronometro,
+.painel-pontuacao {
+  position: absolute;
+  top: 10px;
+  left: 10px; /* Reduzindo a margem para telas menores */
+  width: auto;
+  padding: 8px; /* Reduzindo o padding */
+  background-color: rgba(255, 255, 255, 0.548);
+  backdrop-filter: blur(3px); /* Reduzindo o blur */
+  border-radius: 8px; /* Reduzindo o border-radius */
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Sombra mais suave */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 25px; /* Reduzindo o tamanho da fonte */
+  color: #fff;
+  font-weight: bold;
+}
+
+.painel-pontuacao {
+  top: 50px; /* Ajustando a posição */
+}
+
+.painel-vidas {
+  position: absolute;
+  bottom: 10px; /* Reduzindo a margem */
+  left: 10px; /* Reduzindo a margem */
+  width: auto;
+  padding: 8px; /* Reduzindo o padding */
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(3px); /* Reduzindo o blur */
+  border-radius: 8px; /* Reduzindo o border-radius */
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Sombra mais suave */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 3px; /* Reduzindo o gap */
+}
+
+.vidas img {
+  width: 25px; /* Reduzindo o tamanho das imagens de vida */
+  height: 25px;
+  margin-right: 3px; /* Reduzindo a margem */
+}
+
+.cronometro,
+.pontuacao {
+  font-size: 16px; /* Reduzindo o tamanho da fonte */
+}
+
+.cronometro i{
+    font-size: 14px; 
+    color: #00ccff;
+}
+
+.pontuacao i {
+  font-size: 14px; 
+  color: #ffd900;
+}
+
+/* Estilos específicos para a página de vitória (vitoria.html) */
+body#vitoria-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0; /* Cor de fundo da página de vitória */
+  padding: 20px; /* Adicionando um pouco de padding ao body */
+}
+
+#vitoria-img {
+  max-width: 550px; /* Aumentando para telas menores */
+  height: auto;
+  margin-bottom: -100px; /* Reduzindo a margem */
+}
+
+#mensagem-pontuacao {
+  background-color: rgba(255, 255, 255, 1); /* Fundo branco */
+  padding: 12px 15px; /* Reduzindo o padding */
+  border-radius: 6px; /* Bordas menos arredondadas */
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+  font-size: 1em; /* Reduzindo o tamanho da fonte */
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px; /* Reduzindo a margem */
+  max-width: 80%; /* Tornando responsivo */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#pontuacao-final {
+  font-weight: bold;
+  color: #28a745; /* Cor de destaque */
+  font-size: 1em; /* Reduzindo o tamanho da fonte */
+  display: inline;
+  margin-left: 3px; /* Reduzindo a margem */
+  margin-top: 0;
+}
+
+.pontos-vit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto; /* Ajustando as margens */
+  margin-top: 10px; /* Removendo a margem negativa grande */
+  margin-bottom: 10px; /* Adicionando margem inferior */
+  max-width: 90%; /* Tornando responsivo */
+}
+
+.btn-dark {
+  /* Estilo do botão de reiniciar (Bootstrap) */
+  padding: 10px 20px; /* Reduzindo o padding */
+  font-size: 1em; /* Reduzindo o tamanho da fonte */
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none; /* Remove sublinhado padrão do link */
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+  transition: background-color 0.3s ease;
+  max-width: 80%; /* Tornando responsivo */
+}
+
+.btn-dark:hover {
+  background-color: #23272b;
+  border-color: #1d2124;
+}
+
+/* Media Queries para telas menores (ex: tablets e celulares) */
+@media (max-width: 768px) {
+  .painel-cronometro,
+  .painel-pontuacao,
+  .painel-vidas {
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 6px;
+    left: 5px;
+  }
+
+  .painel-pontuacao {
+    top: 40px;
+  }
+
+  .vidas img {
+    width: 35px;
+    height: 35px;
+    margin-right: 2px;
+  }
+
+  #vitoria-img {
+    max-width: 95%;
+    margin-bottom: 15px;
+  }
+
+  #mensagem-pontuacao {
+    font-size: 1em;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    max-width: 95%;
+  }
+
+  #pontuacao-final {
+    font-size: 1em;
+    margin-left: 3px;
+  }
+
+  .pontos-vit {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    max-width: 95%;
+  }
+
+  .btn-dark {
+    font-size: 0.9em;
+    padding: 8px 15px;
+    border-radius: 6px;
+    max-width: 95%;
+  }
+}
+
+/* Media Query para telas ainda menores (celulares pequenos) */
+@media (max-width: 480px) {
+  .painel-cronometro,
+  .painel-pontuacao,
+  .painel-vidas {
+    font-size: 14px;
+    padding: 4px;
+    border-radius: 4px;
+  }
+
+  .vidas img {
+    width: 30px;
+    height: 30px;
+    margin-right: 1px;
+  }
+
+  #mensagem-pontuacao {
+    font-size: 0.9em;
+    padding: 8px 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  #pontuacao-final {
+    font-size: 0.9em;
+    margin-left: 2px;
+  }
+
+  .btn-dark {
+    font-size: 0.8em;
+    padding: 6px 10px;
+    border-radius: 4px;
+  }
 }

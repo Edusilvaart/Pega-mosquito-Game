@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jogo - mata mosquito</title>
+    <title>Jogo - pega mosquito</title>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -30,7 +30,7 @@
       <div class="row">
         <div class="col">
           <div class="d-flex justify-content-center">
-            <img src="imagens/game.png" alt="" class="img-fluid"/>
+            <img src="imagens/titulo-jogo.png" alt="" class="img-fluid" />
           </div>
         </div>
       </div>
@@ -63,5 +63,48 @@
         </div>
       </div>
     </div>
+
+    <audio id="background-music" src="musica_fundo.mp3" autoplay loop></audio>
+
+    <script>
+      window.addEventListener("click", function () {
+        var audio = document.getElementById("background-music");
+        audio.play();
+      });
+    </script>
+
+    <script>
+      function iniciarJogo() {
+        var nivel = document.getElementById("nivel").value; // Obtém o valor do nível selecionado
+        var tempoJogo;
+
+        if (nivel === "") {
+          window.alert("Selecione um nível"); // Exibe um alerta se nenhum nível for selecionado
+          return; // Sai da função se o nível não for selecionado
+        }
+
+        // Define o tempo de jogo com base no nível selecionado
+        if (nivel === "facil") {
+          tempoJogo = 60; // 1 minuto em segundos
+        } else if (nivel === "medio") {
+          tempoJogo = 120; // 2 minutos em segundos
+        } else if (nivel === "dificil") {
+          tempoJogo = 180; // 3 minutos em segundos
+        } else {
+          // Caso o nível selecionado não corresponda a nenhuma das opções (opcional)
+          window.alert("Nível inválido selecionado.");
+          return;
+        }
+
+        // Redireciona para a página do jogo, passando o nível e o tempo na URL
+        window.location.href =
+          "jogo.html?nivel=" + nivel + "&tempo=" + tempoJogo;
+      }
+
+      window.addEventListener("click", function () {
+        var audio = document.getElementById("background-music");
+        audio.play();
+      });
+    </script>
   </body>
 </html>

@@ -3,26 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo mata mosquito</title>
+    <title>Jogo - pega mosquito</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
 
-    <div class="painel">
+<body style="background-image: url(imagens/gif-fundo.gif);">
 
+    <div class="painel-cronometro">
+        <div class="cronometro">
+            <i class="fas fa-clock"></i> tempo restante: &nbsp; <span id="cronometro"> </span>
+        </div>
+    </div>
+
+    <div class="painel-pontuacao" style="margin-top: 10px;">
+        <div class="pontuacao">
+            <i class="fas fa-trophy"></i> pontuação: &nbsp; <span id="pontuacao"> 0</span>
+        </div>
+    </div>
+
+    <div class="painel-vidas">
         <div class="vidas">
             <img id="v1" src="imagens/coracao_cheio.png" alt="">
             <img id="v2" src="imagens/coracao_cheio.png" alt="">
             <img id="v3" src="imagens/coracao_cheio.png" alt="">
         </div>
-
-        <div class="cronometro">
-            tempo restante: <span id="cronometro"></span>
-        </div>
-
     </div>
 
     <script src="script.js"></script>
+
+    <audio id="background-music" src="musica_fundo.mp3" autoplay loop></audio>
+    
+    <script>
+        window.addEventListener('click', function() {
+            var audio = document.getElementById("background-music");
+            audio.play();
+        });
+    </script>
 
 </body>
 </html>
